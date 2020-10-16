@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+table{width:500px;border:2px red double;}
+th,td,tr{border : black 1px solid;}
+table th:first-child {
+	width:200px;
+}
+table th:last-child {
+	width:100px;
+}
+</style>
+<script type="text/javascript">
+var i=0;
+function addTab(){
+	var table=document.getElementById("table");
+	row=table.insertRow(table.rows.length);
+	td1 = row.insertCell(0);//td열을 생성(index는 0부터시작함)
+	td2 = row.insertCell(1);//<td></td>
+	td3 = row.insertCell(2);
+/* 	td1.innerHTML="<td><input type='text' value='장희정'></td>";
+	td2.innerHTML="<td><input type='text' value='"+i+"'></td>"; 
+	i++;
+	td3.innerHTML="<td><input type='button' value='삭제'></td>"; */
+	td1.innerHTML="<input type='text' value='장희정'>";
+	td2.innerHTML="<input type='text'  value='"+i+"'>"; 
+	i++;
+	td3.innerHTML="<input type='button' value='삭제' onclick='deleteTab(this)' name='button'>";
+
+}
+function deleteTab(th){
+	var tr=th.parentNode.parentNode;//button->td->tr
+	//tr삭제
+	tr.parentNode.removeChild(tr);
+}
+/*
+ 웹의 elements창을 보면 tbody자동 생성 됨!
+ */
+
+</script>
+</head>
+<body>
+<h1>테이블 동적으로 생성하기</h1>
+<span onclick="addTab()">추가하기</span>
+<table id="table">
+
+<tr>
+<th>이름</th>
+<th>나이</th>
+<th>삭제<br>하기</th>
+
+</table>
+</body>
+</html>

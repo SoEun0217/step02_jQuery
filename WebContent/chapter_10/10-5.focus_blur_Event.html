@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<script src="../js/jquery-3.5.1.min.js"></script>
+
+<script>
+$(function() {
+	$("[name=name]")
+	.focus(function(){
+		$(this).css("border","red 5px solid");
+	})
+	.blur(function(){
+		$(this).css("border","blue 1px solid");
+		
+		//text박스의 값을 읽어서 div영역에 넣기
+		var textValue=$(this).val();//값을 읽어서 변수에 담는다.
+		//alert(textValue)
+		//document.getElementById("result").innerHTML=textValue;->기존문법
+		//document.getElementById("result").innerText=textValue;
+		$("#result").html(textValue);//Id는 #으로 찾고 innerHTML이 html함수로 대체된다.
+		//$("#result").text(textValue);
+		//text박스 지우기
+		//$(this).val("");
+		
+		console.log("this : "+this);//this사용가능하지만 뒤에함수를 다르게 해주어야함
+		console.log("$(this) : "+$(this));
+	});//on없이 event이름만 하나의 선택자에 두개의 이벤트가 등록된다.익명으로사용
+})
+	//name속성의 name이름
+	//선택자와 이벤트가 일으키는 주체가 같다.->this
+</script>
+</head>
+<body>
+<h1>focus 와 blur 이벤트</h1>
+
+<form>
+   이름 : <input type="text" name="name">	
+ </form>	
+ 
+ <hr>
+ <div id="result"></div>
+
+</body>
+</html>
+
+
+
+
+
+
